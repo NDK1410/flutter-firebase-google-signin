@@ -4,9 +4,8 @@ import 'package:flutter_otp/flutter_otp.dart';
 void main() => runApp(SendOtp());
 
 // Now instantiate FlutterOtp class in order to call sendOtp function
-FlutterOtp otp = FlutterOtp();
-
 class SendOtp extends StatelessWidget {
+  FlutterOtp otp = FlutterOtp();
   String phoneNumber = "0986333403"; //enter your 10 digit number
   int minNumber = 1000;
   int maxNumber = 6000;
@@ -15,20 +14,27 @@ class SendOtp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("send otp using flutter_otp ")),
-      body: Container(
-        child: Center(
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("send otp using flutter_otp ")),
+        body: Container(
+          child: Center(
             child: RaisedButton(
-          child: Text("Send"),
-          onPressed: () {
-            // call sentOtp function and pass the parameters
-
-            otp.sendOtp(phoneNumber, 'OTP is : pass the generated otp here ',
-                minNumber, maxNumber, countryCode);
-          },
-        )),
+              child: Text("Send"),
+              onPressed: () {
+                // call sentOtp function and pass the parameters
+                otp.sendOtp(
+                    phoneNumber,
+                    'OTP is : pass the generated otp here ',
+                    minNumber,
+                    maxNumber,
+                    countryCode);
+              },
+            ),
+          ),
+        ),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
